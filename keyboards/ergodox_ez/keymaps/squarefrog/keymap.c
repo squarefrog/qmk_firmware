@@ -7,6 +7,7 @@
 #define COLE 1 // colemak layer
 #define SYMB 2 // symbols layer
 #define PTPASTE LALT(LSFT(LGUI(KC_V))) // Paste without formatting
+#define RENAME LCTL(LGUI(KC_E)) // ctrl+gui+e
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -114,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.      ,--------------------------------------------------.
  * | Teensy |  F1  |  F2  |  F3  |  F4  |  F5  |  F11 |      |  F12 |  F6  |  F7  |  F8  |  F9  |  F10 |        |
  * |--------+------+------+------+------+-------------|      |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |      |      |      | Test |      |      |      |        |
+ * |        |      |      |Rename|      |      |      |      |      |      | Test |      |      |      |        |
  * |--------+------+------+------+------+------|      |      |      |------+------+------+------+------+--------|
  * | CapsLk |      |      |      |      |ReTest|------|      |------| Left | Down |  Up  | Right|      |        |
  * |--------+------+------+------+------+------|      |      |      |------+------+------+------+------+--------|
@@ -134,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [SYMB] = LAYOUT_ergodox(
         // left hand
         F(0),    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F11,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS, KC_TRNS, KC_TRNS, RENAME,  KC_TRNS, KC_TRNS, KC_TRNS,
         KC_CAPS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, LCAG(KC_G),
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, PTPASTE, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_MPLY, KC_MRWD, KC_MFFD,
