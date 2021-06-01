@@ -134,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [SYMB] = LAYOUT_ergodox(
         // left hand
-        F(0),    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F11,
+        RESET,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F11,
         KC_TRNS, KC_TRNS, KC_TRNS, RENAME,  KC_TRNS, KC_TRNS, KC_TRNS,
         KC_CAPS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, LCAG(KC_G),
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, PTPASTE, KC_TRNS, KC_TRNS,
@@ -152,14 +152,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS,
         KC_TRNS, KC_TRNS, KC_TRNS
 ),
-};
-
-enum function_id {
-  TEENSY_KEY
-};
-
-const uint16_t PROGMEM fn_actions[] = {
-    [0] = ACTION_FUNCTION(TEENSY_KEY),
 };
 
 // Runs just one time when the keyboard initializes.
@@ -199,15 +191,3 @@ uint32_t layer_state_set_user(uint32_t state) {
 
   return state;
 };
-
-// User defined action functions
-void action_function(keyrecord_t *event, uint8_t id, uint8_t opt) {
-  switch (id) {
-    case TEENSY_KEY:
-      clear_keyboard();
-      _delay_ms(250);
-      bootloader_jump(); // should not return
-      break;
-  }
-}
-
