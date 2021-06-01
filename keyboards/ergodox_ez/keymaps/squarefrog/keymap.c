@@ -4,8 +4,7 @@
 #include "version.h"
 
 #define QWER 0 // qwerty layer
-#define COLE 1 // colemak layer
-#define SYMB 2 // symbols layer
+#define SYMB 1 // symbols layer
 #define PTPASTE LALT(LSFT(LGUI(KC_V))) // Paste without formatting
 #define RENAME LCTL(LGUI(KC_E)) // ctrl+gui+e
 
@@ -18,8 +17,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * hand. Additionally, there is a helper layout which provides Vim-like access to arrow keys.
  *
  * Layer 0: The basic keyboard, geared towards an OS X compliant layout.
- * Layer 1: Similar to L1, except using a Colemak layout
- * Layer 2: Arrow keys, function keys, helper functions for Xcode, Photoshop etc.
+ * Layer 1: Arrow keys, function keys, helper functions for Xcode, Photoshop etc.
  *
  * Keymap 0: Default Qwerty Layer
  *
@@ -29,8 +27,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |  Tab   |   Q  |   W  |   E  |   R  |   T  |  [   |      |  ]   |   Y  |   U  |   I  |   O  |   P  |   \    |
  * |--------+------+------+------+------+------|      |      |      |------+------+------+------+------+--------|
  * | LCtrl  |   A  |   S  |   D  |   F  |   G  |------|      |------|   H  |   J  |   K  |   L  |   ;  |   '    |
- * |--------+------+------+------+------+------| COLE |      |      |------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  |  L1  |      |      |   N  |   M  |   ,  |   .  |   /  | RShift |
+ * |--------+------+------+------+------+------|      |      |      |------+------+------+------+------+--------|
+ * | LShift |   Z  |   X  |   C  |   V  |   B  |      |      |      |   N  |   M  |   ,  |   .  |   /  | RShift |
  * `--------+------+------+------+------+-------------'      `-------------+------+------+------+------+--------'
  *   | LCtrl| LAlt | LGui | Vol- | Vol+ |                                  |   "  |   :  | RGui | RAlt | RCtrl |
  *   `----------------------------------'                                  `----------------------------------'
@@ -48,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     KC_GRV,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,     KC_LBRC,
         KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,
-        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,     TG(COLE),
+        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,     KC_NO,
         KC_LCTL, KC_LALT, KC_LGUI, KC_VOLD, KC_VOLU,
                                                      KC_CAPS,  KC_DEL,
                                                                KC_LALT,
@@ -66,51 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
 /*
- * Keymap 1: Default Colemak Layer
- *
- * ,--------------------------------------------------.      ,--------------------------------------------------.
- * |  Esc   |   1  |   2  |   3  |   4  |   5  |  ~   |      |  -   |   6  |   7  |   8  |   9  |   0  |   +    |
- * |--------+------+------+------+------+-------------|      |------+------+------+------+------+------+--------|
- * |  Tab   |   Q  |   W  |   F  |   P  |   G  |  [   |      |  ]   |   J  |   L  |   U  |   Y  |   ;  |   \    |
- * |--------+------+------+------+------+------|      |      |      |------+------+------+------+------+--------|
- * | LCtrl  |   A  |   R  |   S  |   T  |   D  |------|      |------|   H  |   N  |   E  |   I  |   O  |   '    |
- * |--------+------+------+------+------+------| QWER |      |      |------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  |  L0  |      |      |   K  |   M  |   ,  |   .  |   /  | RShift |
- * `--------+------+------+------+------+-------------'      `-------------+------+------+------+------+--------'
- *   | LCtrl| LAlt | LGui | Vol- | Vol+ |                                  |   "  |   :  | RGui | RAlt | RCtrl |
- *   `----------------------------------'                                  `----------------------------------'
- *                                      ,-------------.      ,-------------.
- *                                      | CpsLk| Del  |      | PgUp | PgDn |
- *                               ,------|------|------|      |------+------+------.
- *                               |      |      | LAlt |      | RAlt |      |      |
- *                               | BkSp | SYMB |------|      |------| Enter| Space|
- *                               |      |Toggle| LGui |      | RGui |      |      |
- *                               `--------------------'      `--------------------'
- *
- */
-[COLE] = LAYOUT_ergodox(
-        // left hand
-        KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     KC_GRV,
-        KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,     KC_LBRC,
-        KC_LCTL, KC_A,    KC_R,    KC_S,    KC_T,    KC_D,
-        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,     KC_TRNS,
-        KC_LCTL, KC_LALT, KC_LGUI, KC_VOLD, KC_VOLU,
-                                                     KC_CAPS,  KC_DEL,
-                                                               KC_LALT,
-                                            KC_BSPC, MO(SYMB), KC_LGUI,
-        // right hand
-        KC_MINS, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_EQL,
-        KC_RBRC, KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,  KC_BSLS,
-                 KC_H,    KC_N,    KC_E,    KC_I,    KC_O,     KC_QUOT,
-        DF(QWER),KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
-                          KC_DQUO, KC_COLN, KC_RGUI, KC_RALT,  KC_RCTL,
-        KC_PGUP, KC_PGDN,
-        KC_RALT,
-        KC_RGUI, KC_ENT,  KC_SPC
-),
-
-/*
- * Layer 2: Function keys and extras
+ * Layer 1: Function keys and extras
  *
  * ,--------------------------------------------------.      ,--------------------------------------------------.
  * | Teensy |  F1  |  F2  |  F3  |  F4  |  F5  |  F11 |      |  F12 |  F6  |  F7  |  F8  |  F9  |  F10 |        |
@@ -179,11 +133,8 @@ uint32_t layer_state_set_user(uint32_t state) {
 
   uint8_t layer = biton32(state);
   switch (layer) {
-      case COLE:
-        ergodox_right_led_1_on();
-        break;
       case SYMB:
-        ergodox_right_led_2_on();
+        ergodox_right_led_1_on();
         break;
       default:
         break;
